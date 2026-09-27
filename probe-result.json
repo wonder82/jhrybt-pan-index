@@ -1,0 +1,61 @@
+{
+  "testedAt": "2026-09-27T10:27:30.218Z",
+  "runner": "github-actions",
+  "tests": [
+    {
+      "name": "tg-direct-tgsearchers3",
+      "url": "https://t.me/s/tgsearchers3",
+      "status": 200,
+      "len": 9773,
+      "hasWidget": false,
+      "hasQuark": false,
+      "hasAliyun": false,
+      "snippet": "<!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> <title>Telegram: View @tgsearchers3</title> <meta nam",
+      "ms": 1022
+    },
+    {
+      "name": "tg-direct-dianyingshare",
+      "url": "https://t.me/s/dianyingshare",
+      "status": 200,
+      "len": 12379,
+      "hasWidget": false,
+      "hasQuark": false,
+      "hasAliyun": false,
+      "snippet": "<!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> <title>Telegram: View @dianyingshare</title> <meta na",
+      "ms": 315
+    },
+    {
+      "name": "hunhepan-post",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 40,
+      "hasWidget": false,
+      "hasQuark": false,
+      "hasAliyun": false,
+      "snippet": "{\"code\":0,\"msg\":\"该关键词不允许搜索\",\"data\":null}",
+      "ms": 389
+    },
+    {
+      "name": "qkpanso-post",
+      "url": "https://qkpanso.com/v1/search/disk",
+      "status": 200,
+      "len": 48,
+      "hasWidget": false,
+      "hasQuark": false,
+      "hasAliyun": false,
+      "snippet": "{\"code\":422,\"msg\":\"请求校验失败，请刷新页面后重试\",\"data\":null}",
+      "ms": 529
+    },
+    {
+      "name": "rsshub-app-tg",
+      "url": "https://rsshub.app/telegram/channel/tgsearchers3",
+      "status": 403,
+      "len": 5744,
+      "hasWidget": false,
+      "hasQuark": false,
+      "hasAliyun": false,
+      "snippet": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/htm",
+      "ms": 148
+    }
+  ]
+}
