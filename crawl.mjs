@@ -132,23 +132,44 @@ function cleanNote(s) {
 
   async function crawlWord(name, year) {
     const r = await hpCollect(name, 2, 30);
-    if (!r.blocked) {
+    if (!r.blocked && r.mode !== "empty" && r.items.length > 0) {
       const n = buildEntry(name, name, r.mode, r.items);
-      if (n > 0) { okCount++; console.log(`-> ${name} [${r.mode}] links=${n}`); }
-      else { emptyCount++; console.log(`-> ${name} empty`); }
-      return;
-    }
-    // 被敏感词拦截：宽松模式单页抢救
-    const r2 = await hpSearchPage(name, 1, 30, false);
-    if (!r2.blocked && r2.ok && r2.items.length > 0) {
-      const n = buildEntry(name, name + "(loose-escape)", "loose", r2.items);
       okCount++;
-      console.log(`-> ${name} [loose-escape] links=${n}`);
+      console.log(`-> ${name} [${r.mode}] links=${n}`);
       return;
     }
-    blockedCount++;
-    blockedWords.push(name);
-    console.log(`-> ${name} BLOCKED`);
+    if (r.blocked) {
+      // 被敏感词拦截：宽松模式单页抢救
+      const r2 = await hpSearchPage(name, 1, 30, false);
+      if (!r2.blocked && r2.ok && r2.items.length > 0) {
+        const n = buildEntry(name, name + "(loose-escape)", "loose", r2.items);
+        okCount++;
+        console.log(`-> ${name} [loose-escape] links=${n}`);
+        return;
+      }
+    }
+    // 年份变形兜底（exact/loose 都空 或 blocked 时）
+    if (year) {
+      for (const alt of [name + " " + year, year + " " + name]) {
+        if (!alt) continue;
+        const r3 = await hpSearchPage(alt, 1, 30, false);
+        if (!r3.blocked && r3.ok && r3.items.length > 0) {
+          const n = buildEntry(name, alt + "(year-loose)", "loose", r3.items);
+          okCount++;
+          console.log(`-> ${name} [year:${alt}] links=${n}`);
+          return;
+        }
+        await sleep(1500);
+      }
+    }
+    if (r.blocked) {
+      blockedCount++;
+      blockedWords.push(name);
+      console.log(`-> ${name} BLOCKED`);
+    } else {
+      emptyCount++;
+      console.log(`-> ${name} empty`);
+    }
   }
 
   for (let i = 0; i < keywords.length; i++) {
