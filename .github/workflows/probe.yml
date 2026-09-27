@@ -1,0 +1,24 @@
+name: probe-data-sources
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: run probe
+        run: node probe.mjs
+      - name: commit result
+        run: |
+          git config user.name "probe-bot"
+          git config user.email "probe-bot@users.noreply.github.com"
+          git add probe-result.json
+          git diff --cached --quiet || git commit -m "probe result $(date -u +%FT%TZ)"
+          git push
