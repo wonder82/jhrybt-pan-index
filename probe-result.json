@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-09-27T10:29:18.279Z",
+  "testedAt": "2026-09-27T10:32:28.342Z",
   "runner": "github-actions",
   "tests": [
     {
@@ -8,7 +8,7 @@
       "status": 200,
       "len": 18796,
       "snippet": "<!DOCTYPE html><html lang=\"zh-CN\"><head> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\"/> <meta name=\"viewport\" content=\"width=device-width, initial-scal",
-      "ms": 550
+      "ms": 5768
     },
     {
       "name": "hunhepan-kw-流浪地球",
@@ -19,7 +19,7 @@
       "code": 0,
       "msg": "抱歉，我们不能提供相关的搜索结果",
       "total": null,
-      "ms": 287
+      "ms": 270
     },
     {
       "name": "hunhepan-kw-三体",
@@ -32,7 +32,7 @@
       "total": 300,
       "items": 10,
       "first": "李淼：<em>三体</em>中的物理学（完结）",
-      "ms": 453
+      "ms": 294
     },
     {
       "name": "hunhepan-kw-test",
@@ -45,7 +45,7 @@
       "total": 300,
       "items": 10,
       "first": "KET官方真题汇总",
-      "ms": 306
+      "ms": 796
     },
     {
       "name": "hunhepan-kw-2024",
@@ -58,7 +58,7 @@
       "total": 300,
       "items": 10,
       "first": "《三联生活周刊》<em>2024</em>｜全52期",
-      "ms": 1144
+      "ms": 2541
     },
     {
       "name": "qkpanso-searchpage",
@@ -66,7 +66,7 @@
       "status": 200,
       "len": 12498,
       "snippet": "<!DOCTYPE html><html lang=\"zh-cn\"><head><script>window.__SYSTEM_ACCENT__='#6366f1'</script> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/png\" href=\"/favicon-96x96.png\" sizes=\"96x96\"/> ",
-      "ms": 3003
+      "ms": 2719
     },
     {
       "name": "qkpanso-post",
@@ -77,7 +77,7 @@
       "code": 422,
       "msg": "请求校验失败，请刷新页面后重试",
       "total": null,
-      "ms": 340
+      "ms": 270
     }
   ]
 }
