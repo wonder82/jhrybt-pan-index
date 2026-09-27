@@ -172,7 +172,14 @@ function cleanNote(s) {
     }
   }
 
+  const startTime = Date.now();
+  const TIME_BUDGET_MS = 30 * 60 * 1000; // 30 分钟预算，超时停止爬新词，保住已有数据
+
   for (let i = 0; i < keywords.length; i++) {
+    if (Date.now() - startTime > TIME_BUDGET_MS) {
+      console.log("time budget reached, stop crawling new words");
+      break;
+    }
     const { name, year } = keywords[i];
     await crawlWord(name, year);
     console.log(`[${i + 1}/${keywords.length}]`);
