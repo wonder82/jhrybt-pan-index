@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-09-27T11:50:16.456Z",
-  "okCount": 9,
-  "blockedCount": 21,
-  "emptyCount": 62,
+  "updatedAt": "2026-09-27T12:47:10.759Z",
+  "okCount": 5,
+  "blockedCount": 18,
+  "emptyCount": 69,
   "blockedWords": [
     "阿凡达：水之道",
     "F1：狂飙飞车",
@@ -21,10 +21,7 @@
     "斗罗大陆",
     "完美世界",
     "诛仙",
-    "雪中悍刀行",
-    "苍兰诀",
-    "知否知否应是绿肥红瘦",
-    "琅琊榜"
+    "雪中悍刀行"
   ],
   "keywordTotal": 92
 }
