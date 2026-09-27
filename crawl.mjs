@@ -20,8 +20,10 @@ function absorb(res) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function hpSearch(kw, size = 30, retries = 1) {
+async function hpSearch(kw, size = 30, retries = 2) {
+  let lastErr = { ok: false };
   for (let attempt = 0; attempt <= retries; attempt++) {
+    if (attempt > 0) await sleep(2500);
     try {
       const res = await fetch(HP_SEARCH, {
         method: "POST",
@@ -33,19 +35,20 @@ async function hpSearch(kw, size = 30, retries = 1) {
           cookie: cookieHeader(),
         },
         body: JSON.stringify({ q: kw, exact: true, page: 1, size, type: "", time: "", from: "web", user_id: 0, filter: true }),
-        signal: AbortSignal.timeout(15000),
+        signal: AbortSignal.timeout(20000),
       });
       absorb(res);
       const j = await res.json();
       if (j.code === 200 && j.data && Array.isArray(j.data.list)) {
         return { ok: true, total: j.data.total || j.data.list.length, items: j.data.list };
       }
-      return { ok: false, code: j.code, msg: j.msg || "" };
+      lastErr = { ok: false, code: j.code, msg: j.msg || "" };
+      if (j.msg && (j.msg.includes("不能提供") || j.msg.includes("不允许"))) return lastErr; // 敏感词，不重试
     } catch (e) {
-      if (attempt >= retries) return { ok: false, error: String((e && e.message) || e).slice(0, 120) };
-      await sleep(1500);
+      lastErr = { ok: false, error: String((e && e.message) || e).slice(0, 120) };
     }
   }
+  return lastErr;
 }
 
 function cleanNote(s) {
@@ -86,9 +89,10 @@ function normalizeKey(kw) {
   let blockedCount = 0;
   let errCount = 0;
   const blockedWords = [];
+  const retryQueue = [];
+  const errors = {};
 
-  for (let i = 0; i < keywords.length; i++) {
-    const { name, year } = keywords[i];
+  async function crawlWord(name, year) {
     const r = await hpSearch(name, 30);
     let items = [];
     let source = "";
@@ -98,32 +102,28 @@ function normalizeKey(kw) {
       source = name;
       okCount++;
     } else {
-      // 失败时尝试变形词：带年份
-      if (!r.ok) {
-        if (r.msg && (r.msg.includes("不能提供") || r.msg.includes("不允许"))) blockedCount++;
-        else errCount++;
-        if (r.msg && (r.msg.includes("不能提供") || r.msg.includes("不允许"))) blockedWords.push(name);
+      if (r.msg && (r.msg.includes("不能提供") || r.msg.includes("不允许"))) {
+        blockedCount++;
+        blockedWords.push(name);
+      } else if (r.ok === false && (r.error || r.code)) {
+        errCount++;
+        errors[name] = (r.error || "code=" + r.code + " " + (r.msg || "")).slice(0, 80);
+        retryQueue.push({ name, year });
       }
       if (year) {
-        const alt = year + " " + name;
-        const r2 = await hpSearch(alt, 30);
-        if (r2.ok && r2.items.length > 0) {
-          items = r2.items;
-          source = alt;
-          okCount++;
-          blockedCount = Math.max(0, blockedCount - (r.ok ? 0 : 1));
-        } else if (year) {
-          const alt2 = name + " " + year;
-          if (alt2 !== alt) {
-            const r3 = await hpSearch(alt2, 30);
-            if (r3.ok && r3.items.length > 0) {
-              items = r3.items;
-              source = alt2;
+        for (const alt of [year + " " + name, name + " " + year]) {
+          if (!items.length && alt) {
+            const r2 = await hpSearch(alt, 30);
+            if (r2.ok && r2.items.length > 0) {
+              items = r2.items;
+              source = alt;
               okCount++;
+              blockedCount = Math.max(0, blockedCount - 1);
+              break;
             }
+            await sleep(2000);
           }
         }
-        await sleep(1200);
       }
     }
 
@@ -145,8 +145,28 @@ function normalizeKey(kw) {
     if (links.length > 0) {
       entries.push({ kw: name, via: source, links });
     }
-    console.log(`[${i + 1}/${keywords.length}] ${name} -> links=${links.length}${source && source !== name ? " (via: " + source + ")" : ""}`);
-    await sleep(1000);
+    console.log(`-> ${name} links=${links.length}${source && source !== name ? " (via: " + source + ")" : ""}`);
+    await sleep(2500);
+    return links.length;
+  }
+
+  for (let i = 0; i < keywords.length; i++) {
+    await crawlWord(keywords[i].name, keywords[i].year);
+    console.log(`[${i + 1}/${keywords.length}] done`);
+  }
+
+  // 第二轮补跑（限流恢复后）
+  if (retryQueue.length > 0) {
+    console.log("retry round: " + retryQueue.length + " words");
+    await sleep(10000);
+    const still = [];
+    for (const w of retryQueue) {
+      const before = entries.filter((e) => e.kw === w.name).length;
+      const got = await crawlWord(w.name, w.year);
+      if (got === 0 && before === 0) still.push(w.name);
+      console.log(`[retry] ${w.name} -> ${got}`);
+    }
+    errCount = still.length;
   }
 
   const index = {
@@ -158,7 +178,7 @@ function normalizeKey(kw) {
   writeFileSync("data/pan-index.json", JSON.stringify(index));
   writeFileSync(
     "data/crawl-state.json",
-    JSON.stringify({ updatedAt: index.updatedAt, okCount, blockedCount, errCount, blockedWords, keywordTotal: keywords.length }, null, 2)
+    JSON.stringify({ updatedAt: index.updatedAt, okCount, blockedCount, errCount, blockedWords, errors, keywordTotal: keywords.length }, null, 2)
   );
   console.log(`DONE ok=${okCount} blocked=${blockedCount} err=${errCount} entries=${entries.length} links=${index.count}`);
 })();
