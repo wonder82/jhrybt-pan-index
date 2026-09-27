@@ -186,11 +186,39 @@ function cleanNote(s) {
     await sleep(2500);
   }
 
+  // 增量合并旧索引：单轮限流波动不会导致历史数据回退
+  function normalizeKey(s) {
+    return String(s || "").toLowerCase().replace(/[\s:：·・'"",，。.()（）\[\]【】\-—_!?！？]/g, "");
+  }
+  const mergedEntries = [];
+  const processed = new Set();
+  const byKw = new Map(entries.map((e) => [normalizeKey(e.kw), e]));
+  let oldEntries = [];
+  try {
+    oldEntries = JSON.parse(readFileSync("data/pan-index.json", "utf8")).entries || [];
+  } catch {}
+  for (const old of oldEntries) {
+    const k = normalizeKey(old.kw);
+    const fresh = byKw.get(k);
+    if (fresh) {
+      // 本轮结果优先，旧链接去重后补充
+      const have = new Set(fresh.links.map((l) => l.u));
+      for (const l of old.links || []) {
+        if (!have.has(l.u)) fresh.links.push(l);
+      }
+      processed.add(k);
+    } else {
+      // 本轮没爬到的旧词原样保留
+      mergedEntries.push(old);
+    }
+  }
+  for (const e of entries) mergedEntries.push(e);
+
   const index = {
     updatedAt: new Date().toISOString(),
     source: "hunhepan",
-    count: entries.reduce((s, e) => s + e.links.length, 0),
-    entries,
+    count: mergedEntries.reduce((s, e) => s + e.links.length, 0),
+    entries: mergedEntries,
   };
   writeFileSync("data/pan-index.json", JSON.stringify(index));
   writeFileSync(
