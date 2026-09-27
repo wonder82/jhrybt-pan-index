@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-09-27T10:56:39.462Z",
-  "okCount": 14,
-  "blockedCount": 26,
-  "errCount": 0,
+  "updatedAt": "2026-09-27T11:50:16.456Z",
+  "okCount": 9,
+  "blockedCount": 21,
+  "emptyCount": 62,
   "blockedWords": [
     "阿凡达：水之道",
     "F1：狂飙飞车",
@@ -24,13 +24,7 @@
     "雪中悍刀行",
     "苍兰诀",
     "知否知否应是绿肥红瘦",
-    "琅琊榜",
-    "父母爱情",
-    "武林外传",
-    "爱情公寓",
-    "星际穿越",
-    "肖申克的救赎"
+    "琅琊榜"
   ],
-  "errors": {},
   "keywordTotal": 92
 }
