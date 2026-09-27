@@ -1,83 +1,78 @@
 {
-  "testedAt": "2026-09-27T10:39:33.957Z",
+  "testedAt": "2026-09-27T11:29:19.612Z",
   "runner": "github-actions",
   "tests": [
-    {
-      "name": "hunhepan-homepage",
-      "url": "https://hunhepan.com/",
-      "status": 200,
-      "len": 18796,
-      "snippet": "<!DOCTYPE html><html lang=\"zh-CN\"><head> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\"/> <meta name=\"viewport\" content=\"width=device-width, initial-scal",
-      "ms": 396
-    },
-    {
-      "name": "hunhepan-kw-流浪地球",
-      "url": "https://hunhepan.com/open/search/disk",
-      "status": 200,
-      "len": 47,
-      "snippet": "{\"code\":0,\"msg\":\"抱歉，我们不能提供相关的搜索结果\",\"data\":null}",
-      "code": 0,
-      "msg": "抱歉，我们不能提供相关的搜索结果",
-      "total": null,
-      "ms": 275
-    },
-    {
-      "name": "hunhepan-kw-三体",
-      "url": "https://hunhepan.com/open/search/disk",
-      "status": 200,
-      "len": 6788,
-      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"李淼：\\u003cem\\u003e三体\\u003c/em\\u003e中的物理学（完结）\",\"files\":\"file:04智子与量子霸权：跨越时空的瞬时通.mp4\\nfile:02引力的起源：如何向宇宙公布\\u003cem\\u003e三体\\u003c/em\\u003",
-      "code": 200,
-      "msg": "请求成功",
-      "total": 300,
-      "items": 10,
-      "first": "李淼：<em>三体</em>中的物理学（完结）",
-      "ms": 498
-    },
-    {
-      "name": "hunhepan-kw-test",
-      "url": "https://hunhepan.com/open/search/disk",
-      "status": 200,
-      "len": 5658,
-      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"KET官方真题汇总\",\"files\":\"file:Key English Test 2 (book).pdf\\nfile:Cambridge Key English Test 4 (book).pdf\\nfile:KET CUP 1 - \\u003cem\\u00",
-      "code": 200,
-      "msg": "请求成功",
-      "total": 300,
-      "items": 10,
-      "first": "KET官方真题汇总",
-      "ms": 317
-    },
-    {
-      "name": "hunhepan-kw-2024",
-      "url": "https://hunhepan.com/open/search/disk",
-      "status": 200,
-      "len": 6559,
-      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"《三联生活周刊》\\u003cem\\u003e2024\\u003c/em\\u003e｜全52期\",\"files\":\"file:三联生活周刊\\u003cem\\u003e2024\\u003c/em\\u003e年01期.pdf\\nfile:三联生活周刊\\u003cem\\u0",
-      "code": 200,
-      "msg": "请求成功",
-      "total": 300,
-      "items": 10,
-      "first": "《三联生活周刊》<em>2024</em>｜全52期",
-      "ms": 314
-    },
     {
       "name": "qkpanso-searchpage",
       "url": "https://qkpanso.com/search?keyword=test",
       "status": 200,
       "len": 12498,
-      "snippet": "<!DOCTYPE html><html lang=\"zh-cn\"><head><script>window.__SYSTEM_ACCENT__='#6366f1'</script> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/png\" href=\"/favicon-96x96.png\" sizes=\"96x96\"/> ",
-      "ms": 1299
+      "snippet": "<!DOCTYPE html><html lang=\"zh-cn\"><head><script>window.__SYSTEM_ACCENT__='#6366f1'</script> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/png\" hr"
     },
     {
-      "name": "qkpanso-post",
+      "name": "qkpanso-get-api",
+      "url": "https://qkpanso.com/v1/search/disk?kw=test&page=1&size=5",
+      "status": 200,
+      "len": 7612,
+      "snippet": "<!DOCTYPE html><html lang=\"zh-cn\"><head><script>window.__SYSTEM_ACCENT__='#6366f1'</script> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/png\" hr"
+    },
+    {
+      "name": "qkpanso-post-tokenless",
       "url": "https://qkpanso.com/v1/search/disk",
       "status": 200,
       "len": 48,
       "snippet": "{\"code\":422,\"msg\":\"请求校验失败，请刷新页面后重试\",\"data\":null}",
       "code": 422,
       "msg": "请求校验失败，请刷新页面后重试",
-      "total": null,
-      "ms": 891
+      "total": null
+    },
+    {
+      "name": "hunhepan-loose-碟中谍8",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 5907,
+      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"恋爱\\u003cem\\u003e碟中谍\\u003c/em\\u003e：身披马甲，百战不殆\",\"files\":\".txt\\nfile:3 弟弟是个体育生.txt\\nfile:4你看到我老板",
+      "code": 200,
+      "msg": "请求成功",
+      "total": 300,
+      "items": 10,
+      "first": "恋爱<em>碟中谍</em>：身披马甲，百战不殆"
+    },
+    {
+      "name": "hunhepan-loose-沙丘2",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 6058,
+      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"\\u003cem\\u003e沙丘\\u003c/em\\u003e序曲三部曲（套装全3册）\",\"files\":\"file:\\u003cem\\u003e沙丘\\u003c/em\\u003e序曲三",
+      "code": 200,
+      "msg": "请求成功",
+      "total": 300,
+      "items": 10,
+      "first": "<em>沙丘</em>序曲三部曲（套装全3册）"
+    },
+    {
+      "name": "hunhepan-loose-三体",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 6153,
+      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"李淼：\\u003cem\\u003e三体\\u003c/em\\u003e中的物理学（完结）\",\"files\":\"file:04智子与量子霸权：跨越时空的瞬时通.mp4\\nfile:02引力的",
+      "code": 200,
+      "msg": "请求成功",
+      "total": 300,
+      "items": 10,
+      "first": "李淼：<em>三体</em>中的物理学（完结）"
+    },
+    {
+      "name": "hunhepan-loose-狂飙",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 47,
+      "snippet": "{\"code\":0,\"msg\":\"抱歉，我们不能提供相关的搜索结果\",\"data\":null}",
+      "code": 0,
+      "msg": "抱歉，我们不能提供相关的搜索结果",
+      "total": null
     }
-  ]
+  ],
+  "qkpansoTokenClues": {},
+  "qkpansoCookieKeys": []
 }
