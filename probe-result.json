@@ -1,61 +1,83 @@
 {
-  "testedAt": "2026-09-27T10:27:30.218Z",
+  "testedAt": "2026-09-27T10:29:18.279Z",
   "runner": "github-actions",
   "tests": [
     {
-      "name": "tg-direct-tgsearchers3",
-      "url": "https://t.me/s/tgsearchers3",
+      "name": "hunhepan-homepage",
+      "url": "https://hunhepan.com/",
       "status": 200,
-      "len": 9773,
-      "hasWidget": false,
-      "hasQuark": false,
-      "hasAliyun": false,
-      "snippet": "<!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> <title>Telegram: View @tgsearchers3</title> <meta nam",
-      "ms": 1022
+      "len": 18796,
+      "snippet": "<!DOCTYPE html><html lang=\"zh-CN\"><head> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\"/> <meta name=\"viewport\" content=\"width=device-width, initial-scal",
+      "ms": 550
     },
     {
-      "name": "tg-direct-dianyingshare",
-      "url": "https://t.me/s/dianyingshare",
-      "status": 200,
-      "len": 12379,
-      "hasWidget": false,
-      "hasQuark": false,
-      "hasAliyun": false,
-      "snippet": "<!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> <title>Telegram: View @dianyingshare</title> <meta na",
-      "ms": 315
-    },
-    {
-      "name": "hunhepan-post",
+      "name": "hunhepan-kw-流浪地球",
       "url": "https://hunhepan.com/open/search/disk",
       "status": 200,
-      "len": 40,
-      "hasWidget": false,
-      "hasQuark": false,
-      "hasAliyun": false,
-      "snippet": "{\"code\":0,\"msg\":\"该关键词不允许搜索\",\"data\":null}",
-      "ms": 389
+      "len": 47,
+      "snippet": "{\"code\":0,\"msg\":\"抱歉，我们不能提供相关的搜索结果\",\"data\":null}",
+      "code": 0,
+      "msg": "抱歉，我们不能提供相关的搜索结果",
+      "total": null,
+      "ms": 287
+    },
+    {
+      "name": "hunhepan-kw-三体",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 6788,
+      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"李淼：\\u003cem\\u003e三体\\u003c/em\\u003e中的物理学（完结）\",\"files\":\"file:04智子与量子霸权：跨越时空的瞬时通.mp4\\nfile:02引力的起源：如何向宇宙公布\\u003cem\\u003e三体\\u003c/em\\u003",
+      "code": 200,
+      "msg": "请求成功",
+      "total": 300,
+      "items": 10,
+      "first": "李淼：<em>三体</em>中的物理学（完结）",
+      "ms": 453
+    },
+    {
+      "name": "hunhepan-kw-test",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 5658,
+      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"KET官方真题汇总\",\"files\":\"file:Key English Test 2 (book).pdf\\nfile:Cambridge Key English Test 4 (book).pdf\\nfile:KET CUP 1 - \\u003cem\\u00",
+      "code": 200,
+      "msg": "请求成功",
+      "total": 300,
+      "items": 10,
+      "first": "KET官方真题汇总",
+      "ms": 306
+    },
+    {
+      "name": "hunhepan-kw-2024",
+      "url": "https://hunhepan.com/open/search/disk",
+      "status": 200,
+      "len": 6559,
+      "snippet": "{\"code\":200,\"msg\":\"请求成功\",\"data\":{\"total\":300,\"list\":[{\"disk_name\":\"《三联生活周刊》\\u003cem\\u003e2024\\u003c/em\\u003e｜全52期\",\"files\":\"file:三联生活周刊\\u003cem\\u003e2024\\u003c/em\\u003e年01期.pdf\\nfile:三联生活周刊\\u003cem\\u0",
+      "code": 200,
+      "msg": "请求成功",
+      "total": 300,
+      "items": 10,
+      "first": "《三联生活周刊》<em>2024</em>｜全52期",
+      "ms": 1144
+    },
+    {
+      "name": "qkpanso-searchpage",
+      "url": "https://qkpanso.com/search?keyword=test",
+      "status": 200,
+      "len": 12498,
+      "snippet": "<!DOCTYPE html><html lang=\"zh-cn\"><head><script>window.__SYSTEM_ACCENT__='#6366f1'</script> <meta charset=\"UTF-8\"/> <link rel=\"icon\" type=\"image/png\" href=\"/favicon-96x96.png\" sizes=\"96x96\"/> ",
+      "ms": 3003
     },
     {
       "name": "qkpanso-post",
       "url": "https://qkpanso.com/v1/search/disk",
       "status": 200,
       "len": 48,
-      "hasWidget": false,
-      "hasQuark": false,
-      "hasAliyun": false,
       "snippet": "{\"code\":422,\"msg\":\"请求校验失败，请刷新页面后重试\",\"data\":null}",
-      "ms": 529
-    },
-    {
-      "name": "rsshub-app-tg",
-      "url": "https://rsshub.app/telegram/channel/tgsearchers3",
-      "status": 403,
-      "len": 5744,
-      "hasWidget": false,
-      "hasQuark": false,
-      "hasAliyun": false,
-      "snippet": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/htm",
-      "ms": 148
+      "code": 422,
+      "msg": "请求校验失败，请刷新页面后重试",
+      "total": null,
+      "ms": 340
     }
   ]
 }
