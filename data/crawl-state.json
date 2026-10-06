@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-06T05:08:42.303Z",
+  "updatedAt": "2026-10-06T15:09:32.874Z",
   "okCount": 5,
-  "blockedCount": 17,
-  "emptyCount": 70,
+  "blockedCount": 18,
+  "emptyCount": 69,
   "blockedWords": [
     "阿凡达：水之道",
     "F1：狂飙飞车",
@@ -20,7 +20,8 @@
     "遮天",
     "斗罗大陆",
     "完美世界",
-    "诛仙"
+    "诛仙",
+    "雪中悍刀行"
   ],
   "keywordTotal": 92
 }
