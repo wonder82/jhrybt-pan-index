@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-16T03:26:15.120Z",
-  "okCount": 5,
-  "blockedCount": 18,
-  "emptyCount": 69,
+  "updatedAt": "2026-10-16T09:05:21.605Z",
+  "okCount": 12,
+  "blockedCount": 23,
+  "emptyCount": 57,
   "blockedWords": [
     "阿凡达：水之道",
     "F1：狂飙飞车",
@@ -21,7 +21,12 @@
     "斗罗大陆",
     "完美世界",
     "诛仙",
-    "雪中悍刀行"
+    "第二十条",
+    "周处除三害",
+    "长安三万里",
+    "抓娃娃",
+    "角斗士2",
+    "狮子王：木法沙传奇"
   ],
   "keywordTotal": 92
 }
