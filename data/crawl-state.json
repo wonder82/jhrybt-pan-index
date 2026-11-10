@@ -1,18 +1,8 @@
 {
-  "updatedAt": "2026-11-09T04:56:37.525Z",
-  "okCount": 2,
-  "blockedCount": 9,
-  "emptyCount": 81,
-  "blockedWords": [
-    "阿凡达：水之道",
-    "F1：狂飙飞车",
-    "泰坦尼克号",
-    "流浪地球2",
-    "哪吒之魔童闹海",
-    "狂飙",
-    "漫长的季节",
-    "繁花",
-    "庆余年"
-  ],
+  "updatedAt": "2026-11-10T03:01:25.115Z",
+  "okCount": 0,
+  "blockedCount": 0,
+  "emptyCount": 92,
+  "blockedWords": [],
   "keywordTotal": 92
 }
